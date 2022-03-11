@@ -1,0 +1,88 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+# DataSource Config
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/vueblog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+        username: root
+        password: 12345678
+    jpa:
+        database: MYSQL
+        show-sql: true
+        hibernate: 
+            ddl-auto: update
+            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+    thymeleaf:
+        cache: false
+    freemarker:
+        # enabled: true
+        # allow-request-override: false
+        cache: false
+        # check-template-location: true
+        # charset: UTF-8
+        # content-type: text/html
+        # expose-request-attributes: false
+        # expose-session-attributes: false
+        # expose-spring-macro-helpers: false
+        suffix: .ftl
+        # template-loader-path: classpath:/templates/
+
+# mybatis:
+#   mapper-locations: classpath:mapper/*.xml
+
+
+########################################################
+###EMBEDDED SERVER CONFIGURATION (ServerProperties)
+########################################################
+#server.port=8080
+#server.address= # bind to a specific NIC
+#server.session-timeout= # session timeout in seconds
+#the context path, defaults to '/'
+#server.context-path=/spring-boot # 修改 默认 访问 路径
+#server.servlet-path= # the servlet path, defaults to '/'
+#server.tomcat.access-log-pattern= # log pattern of the access log
+#server.tomcat.access-log-enabled=false # is access logging enabled
+#server.tomcat.protocol-header=x-forwarded-proto # ssl forward headers
+#server.tomcat.remote-ip-header=x-forwarded-for
+#server.tomcat.basedir=/tmp # base dir (usually not needed, defaults to tmp)
+#server.tomcat.background-processor-delay=30; # in seconds
+#server.tomcat.max-threads = 0 # number of threads in protocol handler
+#server.tomcat.uri-encoding = UTF-8 # character encoding to use for URL decoding
+
+
+########################################################
+###THYMELEAF (ThymeleafAutoConfiguration)
+########################################################
+#spring.thymeleaf.prefix=classpath:/templates/
+#spring.thymeleaf.suffix=.html
+#spring.thymeleaf.mode=HTML5
+#spring.thymeleaf.encoding=UTF-8
+# ;charset=<encoding> is added
+#spring.thymeleaf.content-type=text/html
+# set to false for hot refresh
+# spring.thymeleaf.cache=false
+
+
+########################################################
+###FREEMARKER (FreeMarkerAutoConfiguration)
+########################################################
+# spring.freemarker.allow-request-override=false
+# spring.freemarker.cache=true
+# spring.freemarker.check-template-location=true
+# spring.freemarker.charset=UTF-8
+# spring.freemarker.content-type=text/html
+# spring.freemarker.expose-request-attributes=false
+# spring.freemarker.expose-session-attributes=false
+# spring.freemarker.expose-spring-macro-helpers=false
+#spring.freemarker.prefix=
+#spring.freemarker.request-context-attribute=
+#spring.freemarker.settings.*=
+#spring.freemarker.suffix=.ftl
+#spring.freemarker.template-loader-path=classpath:/templates/#comma-separatedlist
+#spring.freemarker.view-names= #whitelistofviewnamesthatcanberesolved
