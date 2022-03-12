@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.tl.springboottest.interceptors.MyInterceptor1;
+import com.tl.springboottest.interceptors.MyInterceptor2;
 import com.tl.springboottest.servlet.MyServlet1;
 
 import org.springframework.boot.SpringApplication;
@@ -12,11 +14,12 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-@ ServletComponentScan // 方式二： 添加servlet 注册扫描，将自动注册添加了@WebServlet的类为serlvet
+@ServletComponentScan // 方式二： 添加servlet 注册扫描，将自动注册添加了@WebServlet的类为serlvet
 public class SpringboottestApplication extends WebMvcConfigurerAdapter {
 
 	public static void main(String[] args) {
@@ -47,10 +50,26 @@ public class SpringboottestApplication extends WebMvcConfigurerAdapter {
 
 	/**
 	 * 注册Servlet.不需要添加注解：@ServletComponentScan
+	 * 
 	 * @return
 	 */
 	@Bean
 	public ServletRegistrationBean regMyServlet1() {
 		return new ServletRegistrationBean(new MyServlet1(), "/myServlet1/*");
+	}
+
+	/**
+	 * 添加拦截器
+	 * 不能拦截servlet
+	 */
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		// 重写addInterceptors方法并为拦截器配置拦截规则
+		registry.addInterceptor(new MyInterceptor1()).addPathPatterns("/**");
+		registry.addInterceptor(new MyInterceptor2()).addPathPatterns("/**").excludePathPatterns("/freemarkerHello2");
+		// 排除路径
+		// registry.addInterceptor(new
+		// MyInterceptor2()).addPathPatterns("/**").excludePathPatterns("/Hello");
+		super.addInterceptors(registry);
 	}
 }
