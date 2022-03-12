@@ -24,6 +24,7 @@ public class SpringboottestApplication extends WebMvcConfigurerAdapter {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringboottestApplication.class, args);
+		// SpringApplication.run(SpringboottestApplication.class, new String[]{"hello,","tl"});
 	}
 
 	// 第一种方式，重写configureMessageConverters，并将FastJsonConverter设置到系统中
