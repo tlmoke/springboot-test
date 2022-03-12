@@ -5,7 +5,6 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Demo2Controller {
@@ -27,4 +26,10 @@ public class Demo2Controller {
         map.put("message", "this data is from backing server , for freemarker2");
         return "helloHtml1";
     }
+
+    // @RequestMapping("/helloJsp")
+    // public String hello3(ModelMap map) {
+    //     map.put("message", "this data is from the backing server");
+    //     return "helloJsp";
+    // }
 }
