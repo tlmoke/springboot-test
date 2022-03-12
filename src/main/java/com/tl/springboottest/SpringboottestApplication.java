@@ -2,6 +2,8 @@ package com.tl.springboottest;
 
 import java.util.List;
 
+import javax.servlet.MultipartConfigElement;
+
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.tl.springboottest.environment.MyOtherConfig;
@@ -13,12 +15,14 @@ import com.tl.springboottest.servlet.MyServlet1;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.util.unit.DataSize;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -41,7 +45,7 @@ public class SpringboottestApplication extends WebMvcConfigurerAdapter {
 		 * Banner.Mode.LOG:日志输出方式;
 		 */
 		// application.setBannerMode(Banner.Mode.OFF);
-		// application.setRegisterShutdownHook(false);	//自动重启将不起作用
+		// application.setRegisterShutdownHook(false); //自动重启将不起作用
 		application.run(args);
 	}
 
@@ -90,5 +94,15 @@ public class SpringboottestApplication extends WebMvcConfigurerAdapter {
 		// registry.addInterceptor(new
 		// MyInterceptor2()).addPathPatterns("/**").excludePathPatterns("/Hello");
 		super.addInterceptors(registry);
+	}
+
+	// 配置文件上传
+	@Bean
+	public MultipartConfigElement multipartConfigFactory() {
+		MultipartConfigFactory configFactory = new MultipartConfigFactory();
+		configFactory.setMaxFileSize(DataSize.parse("128MB"));// KB MB 设置单个上传文件大小
+		configFactory.setMaxRequestSize(DataSize.parse("1024MB"));
+		configFactory.setLocation("/");// 设置文件上传路径
+		return configFactory.createMultipartConfig();
 	}
 }
