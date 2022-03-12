@@ -2,6 +2,15 @@ server:
   port: 8081
   tomcat:
     uri-encoding: UTF-8
+management:
+    server:
+        port: 54001 # 定监听端口，不指定则语server端口一致
+    endpoints:
+        web:
+            base-path: /actuator
+            exposure:
+                include: "*"
+
 # DataSource Config
 spring:
     datasource:
