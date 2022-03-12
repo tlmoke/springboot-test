@@ -41,6 +41,7 @@ public class SpringboottestApplication extends WebMvcConfigurerAdapter {
 		 * Banner.Mode.LOG:日志输出方式;
 		 */
 		// application.setBannerMode(Banner.Mode.OFF);
+		// application.setRegisterShutdownHook(false);	//自动重启将不起作用
 		application.run(args);
 	}
 

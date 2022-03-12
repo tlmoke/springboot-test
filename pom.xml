@@ -109,6 +109,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!--
+		devtools 可 以 实 现 页 面 热 部 署 （ 即 页 面 修 改 后 会 立 即 生 效 ， 这 个 可 以 直 接 在
+		application.properties 文件中配置 spring.thymeleaf.cache=false 来实现），
+		实现类文件热部署（类文件修改后不会立即生效），实现对属性文件的热部署。
+		即 devtools 会监听 classpath 下的文件变动，并且会立即重启应用（发生在保存时机），注意：
+		因为其采用的虚拟机机制，该项重启是很快的
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -123,9 +137,11 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<!--fork : 如果没有该项配置，肯呢个 devtools 不会起作用，即应用不会 restart -->
+					<fork>true</fork>
 				</configuration>
 				<!-- 配置热部署 -->
-				<dependencies>
+				<!-- <dependencies>
 					<dependency>
 						<groupId>org.springframework</groupId>
 						<artifactId>springloaded</artifactId>
@@ -141,7 +157,7 @@
 							<classifier>exec</classifier>
 						</configuration>
 					</execution>
-				</executions>
+				</executions> -->
 			</plugin>
 		</plugins>
 	</build>
