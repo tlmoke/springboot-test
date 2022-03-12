@@ -88,10 +88,10 @@
 			setup! (Hint: This may be the result of an unspecified view, due to default view name
 			generation.)
 		-->
-		<dependency>
+		<!-- <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-		</dependency>
+		</dependency> -->
 		<!-- tomcat 的支持.-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
