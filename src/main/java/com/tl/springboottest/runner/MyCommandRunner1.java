@@ -2,7 +2,10 @@ package com.tl.springboottest.runner;
 
 import java.util.Arrays;
 
+import com.tl.springboottest.config.MySqlConfig;
+
 import org.jboss.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -13,6 +16,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(value = 1) // 设置启动执行顺序
 public class MyCommandRunner1 implements CommandLineRunner {
+
+    @Autowired
+    private MySqlConfig config;
     private Logger logger = Logger.getLogger(this.getClass());
 
     /**
@@ -21,5 +27,6 @@ public class MyCommandRunner1 implements CommandLineRunner {
     @Override
     public void run(String... arg0) throws Exception {
         logger.info("执行启动任务1..." + Arrays.asList(arg0));
+        logger.info(config);
     }
 }
