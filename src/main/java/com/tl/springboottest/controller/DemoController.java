@@ -48,5 +48,11 @@ public class DemoController {
         return demoService.getById(id);
     }
 
+    @RequestMapping("/deleteCache/{no}")
+    public String delete(@PathVariable(name = "no", required = true) Integer id) {
+        System.out.println("deleteCache：" + id);
+        demoService.deleteFromCache(id);
+        return "ok";
+    }
 
 }

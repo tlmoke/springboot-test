@@ -138,6 +138,23 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency> -->
+
+		<!--
+		包含支持 UI 模版（Velocity，FreeMarker，JasperReports），
+		邮件服务，
+		脚本服务(JRuby)，
+		缓存 Cache（EHCache），
+		任务计划 Scheduling（uartz）。
+		-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<!-- 添加 redis 支持-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
