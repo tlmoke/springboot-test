@@ -1,0 +1,15 @@
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+#这个是 MANIFEST.MF 文件中的版本号
+${application.version}
+#这个是上面的的版本号前面加 v 后上括号
+${application.formatted-version}
+
+#这个是 springboot 的版本号
+${spring-boot.version}
+#这个是 springboot 的版本号
+${spring-boot.formatted-version}

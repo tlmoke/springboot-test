@@ -24,13 +24,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 @ServletComponentScan // 方式二： 添加servlet 注册扫描，将自动注册添加了@WebServlet的类为serlvet
-@EnableConfigurationProperties({MySqlConfig.class,MyOtherConfig.class})	// 配置加载读取自定义配置类
-@ComponentScan(basePackages = {"com.tl.springboottest", "com.tl.runner"})	// 自定义包扫描路径
+@EnableConfigurationProperties({ MySqlConfig.class, MyOtherConfig.class }) // 配置加载读取自定义配置类
+@ComponentScan(basePackages = { "com.tl.springboottest", "com.tl.runner" }) // 自定义包扫描路径
 public class SpringboottestApplication extends WebMvcConfigurerAdapter {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringboottestApplication.class, args);
-		// SpringApplication.run(SpringboottestApplication.class, new String[]{"hello,","tl"});
+		// SpringApplication.run(SpringboottestApplication.class, args);
+		// SpringApplication.run(SpringboottestApplication.class, new
+		// String[]{"hello,","tl"});
+		SpringApplication application = new SpringApplication(SpringboottestApplication.class);
+		/*
+		 * Banner.Mode.OFF:关闭;
+		 * Banner.Mode.CONSOLE:控制台输出，默认方式;
+		 * Banner.Mode.LOG:日志输出方式;
+		 */
+		// application.setBannerMode(Banner.Mode.OFF);
+		application.run(args);
 	}
 
 	// 第一种方式，重写configureMessageConverters，并将FastJsonConverter设置到系统中
