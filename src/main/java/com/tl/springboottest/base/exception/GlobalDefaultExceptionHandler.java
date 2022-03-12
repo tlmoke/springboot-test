@@ -4,12 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
 
 @ControllerAdvice
 public class GlobalDefaultExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
-    public void defaultErrorHandler(HttpServletRequest req, Exception e) {
+    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) {
         // // If the exception is annotated with @ResponseStatus rethrow it and let
         // // the framework handle it - like the OrderNotFoundException example
         // // at the start of this post.
@@ -43,5 +44,10 @@ public class GlobalDefaultExceptionHandler {
          * 定义视图文件(比如：error.html,error.ftl,error.jsp);
          *
          */
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exception", e);
+        mav.addObject("url", req.getRequestURL());
+        mav.setViewName("error");
+        return mav;
     }
 }
