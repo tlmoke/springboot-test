@@ -2,7 +2,7 @@ package com.tl.springboottest.runner;
 
 import java.util.Arrays;
 
-import com.tl.springboottest.config.MySqlConfig;
+import com.tl.springboottest.environment.MySqlConfig;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
