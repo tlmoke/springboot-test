@@ -36,8 +36,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @author tl
  * @version v.0.1
  */
-// @Configuration
-// @EnableCaching // 启用缓存，这个注解很重要；
+@Configuration
+@EnableCaching // 启用缓存，这个注解很重要；
 public class RedisCacheConfig extends CachingConfigurerSupport {
     private Duration timeToLive = Duration.ZERO;
 
